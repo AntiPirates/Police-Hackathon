@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route,Routes, Switch } from 'react-router-dom'
 import VirusTotal from './Components/VirusTotal';
 import SuspiciousDownloads from './Components/SuspiciousDownloads';
 import DeceptiveCalls from './Components/DeceptiveCalls';
+import AppDetails from './Components/AppDetails';
 
 function App() {
   return (
@@ -30,12 +31,13 @@ function App() {
             overflowY: "auto"
         }}> 
           <Router>
-          <Main />
+          {/* <Main /> */}
           <Routes>
-            {/* <Route path="/" element={<Main/>} /> */}
-            <Route path="/virustotal" element={<VirusTotal/>} />
-            <Route path="/suspiciousdownloads" element={<SuspiciousDownloads/>} />
-            <Route path="/deceptivecalls" element={<DeceptiveCalls/>} />
+            <Route path="/" element={<Main/>} />
+            <Route exact path="/virustotal" element={<VirusTotal/>} />
+            <Route exact path="/suspiciousdownloads" element={<SuspiciousDownloads/>} />
+            <Route exact path="/deceptivecalls" element={<DeceptiveCalls/>} />
+            <Route exact path="/appdetails" element={<AppDetails/>} />
           </Routes>
         </Router>
         </div>

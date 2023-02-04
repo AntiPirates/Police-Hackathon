@@ -9,7 +9,7 @@ import stats from '../images/stats.png';
 import VirusTotal from './VirusTotal.js';
 import SuspiciousDownloads from './SuspiciousDownloads.js';
 import DeceptiveCalls from './DeceptiveCalls.js';
-import { Route, NavLink} from "react-router-dom";
+import { Route, NavLink, Link} from "react-router-dom";
 
 const Main = () => {
     let [ contacts, setContacts ] = useState(Config.phoneNumbers);
@@ -45,7 +45,7 @@ const Main = () => {
                     <Box h='40px' w='500px' bg='gray.100'>
                         <HStack>
                             <Box h='40px' w='100px' bg='#8a1a1a'>
-                                <NavLink to="/deceptivecalls"><Text textAlign={['left', 'center']} color='white'> {Config.deceptivePhoneCalls} </Text></NavLink>
+                                <NavLink to="/deceptivecalls" target={'_blank'}><Text textAlign={['left', 'center']} color='white'> {Config.deceptivePhoneCalls} </Text></NavLink>
                             </Box>
                             <Box h='40px' w='400px' >
                                 <Text textAlign={['left']}> Deceptive phone calls </Text>
@@ -55,7 +55,7 @@ const Main = () => {
                     <Box h='40px' w='500px' bg='gray.100'>
                         <HStack>
                             <Box h='40px' w='100px' bg='#918316'>
-                            <NavLink to="/suspiciousdownloads"><Text textAlign={['left', 'center']} color='white'> {Config.suspiciousDownloads} </Text></NavLink>
+                            <NavLink to="/suspiciousdownloads" target={'_blank'}><Text textAlign={['left', 'center']} color='white' > {Config.suspiciousDownloads} </Text></NavLink>
                             </Box>
                             <Box h='40px' w='400px' bg='gray.100'>
                                 <Text textAlign={['left']}> Contains suspicious download links </Text>
@@ -65,7 +65,7 @@ const Main = () => {
                     <Box h='40px' w='500px' bg='gray.100'>
                         <HStack>
                             <Box h='40px' w='100px' bg='#0998e6'>
-                            <NavLink to="/virustotal"><Text textAlign={['left', 'center']} color='white'> {Config.failedVirustotal} </Text></NavLink>
+                            <NavLink to="/virustotal" target={'_blank'}><Text textAlign={['left', 'center']} color='white'> {Config.failedVirustotal} </Text></NavLink>
                             </Box>
                             <Box h='40px' w='400px' bg='gray.100'>
                                 <Text textAlign={['left']}> Failed virustotal test </Text>

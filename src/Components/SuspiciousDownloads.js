@@ -18,14 +18,15 @@ function SuspiciousDownloads() {
             fontWeight='bold'
             padding={2}
             alignItems="center"
-            w={"800px"}
+            height={'1000px'}
+            w={"1100px"}
         >
             <GridItem bg='white' pl={2} area='ratingsAndReviews' overflowY={'scroll'} overflowX={'hidden'}>
                 <HStack>
                     <Box w='850px'>
                         <Text textAlign={['left']} fontSize={20}> Ratings and reviews </Text>
                     </Box>
-                    <Button colorScheme={'blue'} size='xs' onClick={onOpen}>Show complete stats</Button>
+                    {/* <Button colorScheme={'blue'} size='xs' onClick={onOpen}>Show complete stats</Button> */}
                 </HStack>
                 <Box h='10px' w='500px' bg='white'>
                 </Box>
