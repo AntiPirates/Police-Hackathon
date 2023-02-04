@@ -28,7 +28,7 @@ function App() {
             alignItems: "center",
             backgroundColor: "#F7F7F7",
             overflowY: "auto"
-        }}>
+        }}> 
           <Router>
           <Main />
           <Routes>
