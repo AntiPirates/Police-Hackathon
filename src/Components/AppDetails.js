@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Image, Badge, SimpleGrid, HStack, GridItem, Grid, VStack, StackDivider, Text, Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption, TableContainer, Flex, Icon, Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Button,  Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure } from '@chakra-ui/react';
+import { Box, Center, Image, Badge, SimpleGrid, HStack, GridItem, Grid, VStack, StackDivider, Text, Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption, TableContainer, Flex, Icon, Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Button,  Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure } from '@chakra-ui/react';
 import { MdSettings, MdStar, MdTrain } from 'react-icons/md'
 import { Config } from "../Config.js";
 import { Route, NavLink, Link} from "react-router-dom";
@@ -112,6 +112,17 @@ function AppDetails() {
                     // }
                     
                 })}
+                <Box h={"10px"}></Box>
+                <Box bg='white'>
+                <VStack spacing={"20px"}>
+                <Center>
+                    <Button size="lg" colorScheme={"teal"} w="400px" h={"50px"}>Generate and mail report</Button>
+                </Center>
+                <Center>
+                    <Button size="lg" colorScheme={"teal"} w="400px" h={"50px"}>Report to MeiTY</Button>
+                </Center>
+                </VStack>
+                </Box>
             </GridItem>
             </Grid>
         </>

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 // import { Container, Grid, Typography } from '@material-ui/core';
 import { CContainer, CFormCheck } from '@coreui/react';
-import { Box, Image, Badge, SimpleGrid, HStack, GridItem, Grid, VStack, StackDivider, Text, Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption, TableContainer, Flex, Icon, Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Button,  Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure } from '@chakra-ui/react';
+import { Box, Center, RadioGroup, Radio, Stack, Image, Badge, SimpleGrid, HStack, GridItem, Grid, VStack, StackDivider, 
+    Text, Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption, TableContainer, Flex, Icon, Accordion, AccordionItem, 
+    AccordionButton, AccordionIcon, AccordionPanel, Button,  Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, 
+    ModalBody, ModalCloseButton, useDisclosure, Editable, EditablePreview, EditableInput } from '@chakra-ui/react';
 import { MdSettings, MdStar, MdTrain } from 'react-icons/md'
 import { Config } from "../Config.js";
 import map from '../images/Map1.jpg';
@@ -13,12 +16,14 @@ import { Route, NavLink, Link} from "react-router-dom";
 import www from '../images/www.jpg';
 import gps from '../images/playstore.jpg';
 import apstr from '../images/applestore.png';
+import MapChart from "./MapChart";
 
 const Main = () => {
     let [ contacts, setContacts ] = useState(Config.phoneNumbers);
     let [ showStats, setShowStats ] = useState(false);
+    const [content, setContent] = useState("");
     const { isOpen, onOpen, onClose } = useDisclosure();
-      
+    let [ isAutomatedSchedule, setIsAutomatedSchedule ] = useState(true);
     return (
         <>
         <Grid
@@ -89,7 +94,7 @@ const Main = () => {
                     >
                         <TableContainer>
                             <Table variant='simple'>
-                            <TableCaption>Contact list of the fraudulents</TableCaption>
+                            <TableCaption>List of the fraudulents</TableCaption>
                             <Thead>
                                 <Tr>
                                     <Th>Platforms</Th>
@@ -106,10 +111,6 @@ const Main = () => {
                                         )
                                     })} */}
                                     <Tr>
-                                        <Td><Image src={www}/></Td>
-                                        <Td>{Config.trapDetails[0].freq}</Td>
-                                    </Tr>
-                                    <Tr>
                                         <Td><Image src={gps}/></Td>
                                         <Td>{Config.trapDetails[1].freq}</Td>
                                     </Tr>
@@ -117,20 +118,74 @@ const Main = () => {
                                         <Td><Image src={apstr}/></Td>
                                         <Td>{Config.trapDetails[2].freq}</Td>
                                     </Tr>
+                                    <Tr>
+                                        <Td><Image src={www}/></Td>
+                                        <Td>{Config.trapDetails[0].freq}</Td>
+                                    </Tr>
                             </Tbody>
                             </Table>
                         </TableContainer>
                 </VStack>
             </GridItem>
             <GridItem bg='white' pl={2} area='schedule'>
-                Schedule scan
+            <Text textAlign={['left']} fontSize={20}> Schedule scan </Text>
+            <Box h="10px"></Box>
+            <Center>
+            <RadioGroup defaultValue='1'>
+                <Stack spacing={4} direction='row'>
+                    <Box h={"35px"} w={"400px"}borderWidth={"2px"}>
+                        <Center>
+                            <Radio value='1' onClick={()=>{setIsAutomatedSchedule(true)}}>
+                            Automated
+                            </Radio>
+                        </Center>
+                    </Box>
+                    <Box h={"35px"} w={"400px"}borderWidth={"2px"}>
+                        <Center>
+                            <Radio value='2' onClick={()=>{setIsAutomatedSchedule(false)}}>
+                            Manual
+                            </Radio>
+                        </Center>
+                    </Box>
+                </Stack>
+            </RadioGroup>
+            </Center>
+            <Box h="8px"></Box>
+            <Center>
+                <Box h="100px" w="820px" bg="gray.100">
+                    {isAutomatedSchedule === true && <Center>
+                        <Text textAlign={['left']} fontSize={15} fontWeight="medium"> In automatic scheduling, the schedule starts at 08:00 A.M. IST. </Text>
+                    </Center>}
+                    {isAutomatedSchedule !== true && <Center>
+                        <Editable defaultValue='Click here to enter time' onClick={(value) => {
+                            Config.scheduleTime = value;
+                            console.log(Config.scheduleTime);
+                        }}>
+                            <EditablePreview />
+                            <EditableInput />
+                        </Editable>
+                    </Center>}
+                </Box>
+            </Center>
             </GridItem>
             <GridItem bg='white' pl={2} area='generate'>
-                Generate report
+                <Text textAlign={['left']} fontSize={20}> Generate report </Text>
+                <Box h={"100px"}></Box>
+                <VStack spacing={"40px"}>
+                <Center>
+                    <Button size="lg" colorScheme={"teal"} w="800px" h={"60px"}>Download Report</Button>
+                </Center>
+                <Center>
+                    <Button size="lg" colorScheme={"teal"} w="800px" h={"60px"}>Generate and mail report</Button>
+                </Center>
+                </VStack>
             </GridItem>
             <GridItem bg='white' pl={2} area='geolocation'>
                 <Text textAlign={['left']} fontSize={20}> Geolocation </Text>
                 <Image src={map} alt={'India map'} h='500px'/>
+                {/* <div>
+                    <MapChart setTooltipContent={setContent} />
+                </div> */}
             </GridItem>
         </Grid>
 

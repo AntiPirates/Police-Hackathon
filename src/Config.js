@@ -4,6 +4,10 @@ class Config {
     static appType = "";
     static appId = "";
 
+    // For schedule
+    static isAutomatedSchedule = true;
+    static scheduleTime = "";
+    
     static phoneNumbers = [
         {
             contact: "6127961931",
