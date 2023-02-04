@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Image, Badge, SimpleGrid, HStack, GridItem, Grid, VStack, StackDivider, Text, Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption, TableContainer, Flex, Icon, Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Button,  Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure } from '@chakra-ui/react';
 import { MdSettings, MdStar, MdTrain } from 'react-icons/md'
 import { Config } from "../Config.js";
+import { Route, NavLink, Link} from "react-router-dom";
 
 function DeceptiveCalls() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -29,17 +30,17 @@ function DeceptiveCalls() {
                 </HStack>
                 <Box h='10px' w='500px' bg='white'>
                 </Box>
-                {Config.deceptiveCallApps.map(currentApp => {
+                {Object.values(Config.deceptiveCallApps).map(currentApp => {
                     let fraudColor = '';
                     let fraudMessage = "";
-                    if(currentApp.isFraud === 'yes') {
+                    if(currentApp.detectionStatus === 'malicious') {
                         fraudColor = 'red';
-                        fraudMessage = "Suspicious";
-                    } else if(currentApp.isFraud === 'not sure') {
+                        fraudMessage = "Malicious";
+                    } else if(currentApp.detectionStatus === 'suspicious') {
                         fraudColor = 'yellow';
-                        fraudMessage = "Cannot say";
+                        fraudMessage = "Suspicious";
                     } else {
-                        fraudMessage = "Not Suspicious";
+                        fraudMessage = "Harmless";
                         fraudColor = 'teal';
                     }
 
@@ -61,7 +62,10 @@ function DeceptiveCalls() {
                                 lineHeight='tight'
                                 noOfLines={1}
                                 >
-                                Application name: {currentApp.name}
+                                <NavLink to="/appdetails" onClick={() => {
+                                    Config.appType = "deceptiveCalls"
+                                    Config.appId = currentApp.id;
+                                }}>Application name: {currentApp.name} </NavLink>
                                 </Box>
                                 <Box display='flex' mt='2' alignItems='center'>
                                     <Box>Ratings: </Box>

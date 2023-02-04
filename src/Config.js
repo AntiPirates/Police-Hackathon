@@ -1,4 +1,9 @@
 class Config {
+
+    // For app details page
+    static appType = "";
+    static appId = "";
+
     static phoneNumbers = [
         {
             contact: "6127961931",
@@ -50,13 +55,30 @@ class Config {
         }
     ];
 
+    static trapDetails = [
+        {
+            name: "playstore",
+            freq: '50'
+        },
+        {
+            name: "applestore",
+            freq: '23'
+        },
+        {
+            name: "www",
+            freq: '45'
+        }
+    ];
     static deceptivePhoneCalls = '567';
     static suspiciousDownloads = '890';
     static failedVirustotal = '9800';
 
-    static failedVirusTotalApps = [
-        {
+    static failedVirusTotalApps = {
+        1: {
+            id: 1, 
             name: "1XBet",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
@@ -65,20 +87,27 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '3',
-            isFraud: "yes"
+            detectionStatus: "yes"
         },
-        {
+        2: {
+            id: 2, 
             name: "Dream 11",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '4',
-            isFraud: "not sure"
+            detectionStatus: "malicious",
+            histogram: "url"
         },
-        {
+        3: {
+            id: 3, 
             name: "App 3",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
@@ -89,10 +118,14 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '2',
-            isFraud: "no"
+            detectionStatus: "suspicious",
+            histogram: "url"
         },
-        {
+        4: {
+            id: 4, 
             name: "App 4",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews:[
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
@@ -101,23 +134,61 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '1',
-            isFraud: "no"
+            detectionStatus: "harmless",
+            histogram: "url"
         },
-        {
+        5: {
+            id: 5, 
             name: "App 5",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '3',
-            isFraud: "yes"
+            detectionStatus: "malicious",
+            histogram: "url"
+        },
+        6: {
+            id: 6, 
+            name: "App 6",
+            packageName: "11.2.1",
+            dev: "Sybo",
+            reviews:[
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
+                ],
+            rating: '1',
+            detectionStatus: "harmless",
+            histogram: "url"
+        },
+        7: {
+            id: 7, 
+            name: "App 7",
+            packageName: "11.2.1",
+            dev: "Sybo",
+            reviews: [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
+                ],
+            rating: '3',
+            detectionStatus: "malicious",
+            histogram: "url"
         }
-    ];
+    };
 
-    static suspiciousDownloadApps = [
-        {
+    static suspiciousDownloadApps = {
+        1: {
+            id: 1, 
             name: "1XBet",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
@@ -126,20 +197,27 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '3',
-            isFraud: "yes"
+            detectionStatus: "yes"
         },
-        {
+        2: {
+            id: 2, 
             name: "Dream 11",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '4',
-            isFraud: "not sure"
+            detectionStatus: "malicious",
+            histogram: "url"
         },
-        {
+        3: {
+            id: 3, 
             name: "App 3",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
@@ -150,10 +228,14 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '2',
-            isFraud: "no"
+            detectionStatus: "suspicious",
+            histogram: "url"
         },
-        {
+        4: {
+            id: 4, 
             name: "App 4",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews:[
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
@@ -162,23 +244,61 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '1',
-            isFraud: "no"
+            detectionStatus: "harmless",
+            histogram: "url"
         },
-        {
+        5: {
+            id: 5, 
             name: "App 5",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '3',
-            isFraud: "yes"
+            detectionStatus: "malicious",
+            histogram: "url"
+        },
+        6: {
+            id: 6, 
+            name: "App 6",
+            packageName: "11.2.1",
+            dev: "Sybo",
+            reviews:[
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
+                ],
+            rating: '1',
+            detectionStatus: "harmless",
+            histogram: "url"
+        },
+        7: {
+            id: 7, 
+            name: "App 7",
+            packageName: "11.2.1",
+            dev: "Sybo",
+            reviews: [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
+                ],
+            rating: '3',
+            detectionStatus: "malicious",
+            histogram: "url"
         }
-    ];
+    };
 
-    static deceptiveCallApps = [
-        {
+    static deceptiveCallApps = {
+        1: {
+            id: 1, 
             name: "1XBet",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
@@ -187,20 +307,27 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '3',
-            isFraud: "yes"
+            detectionStatus: "yes"
         },
-        {
+        2: {
+            id: 2, 
             name: "Dream 11",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '4',
-            isFraud: "not sure"
+            detectionStatus: "malicious",
+            histogram: "url"
         },
-        {
+        3: {
+            id: 3, 
             name: "App 3",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
@@ -211,10 +338,14 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '2',
-            isFraud: "no"
+            detectionStatus: "suspicious",
+            histogram: "url"
         },
-        {
+        4: {
+            id: 4, 
             name: "App 4",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews:[
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
@@ -223,19 +354,54 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '1',
-            isFraud: "no"
+            detectionStatus: "harmless",
+            histogram: "url"
         },
-        {
+        5: {
+            id: 5, 
             name: "App 5",
+            packageName: "11.2.1",
+            dev: "Sybo",
             reviews: [
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '3',
-            isFraud: "yes"
+            detectionStatus: "malicious",
+            histogram: "url"
+        },
+        6: {
+            id: 6, 
+            name: "App 6",
+            packageName: "11.2.1",
+            dev: "Sybo",
+            reviews:[
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
+                ],
+            rating: '1',
+            detectionStatus: "harmless",
+            histogram: "url"
+        },
+        7: {
+            id: 7, 
+            name: "App 7",
+            packageName: "11.2.1",
+            dev: "Sybo",
+            reviews: [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
+                ],
+            rating: '3',
+            detectionStatus: "malicious",
+            histogram: "url"
         }
-    ];
+    };
 }
 
 export { Config }

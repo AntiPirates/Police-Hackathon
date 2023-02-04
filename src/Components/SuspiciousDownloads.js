@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Image, Badge, SimpleGrid, HStack, GridItem, Grid, VStack, StackDivider, Text, Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption, TableContainer, Flex, Icon, Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, Button,  Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure } from '@chakra-ui/react';
 import { MdSettings, MdStar, MdTrain } from 'react-icons/md'
 import { Config } from "../Config.js";
+import { Route, NavLink, Link} from "react-router-dom";
 
 function SuspiciousDownloads() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -9,17 +10,16 @@ function SuspiciousDownloads() {
     return (
         <>
          <Grid
-            templateAreas={`"ratingsAndReviews"`}
-            gridTemplateRows={'1fr'}
-            gridTemplateColumns={'1fr'}
-            h='200px'
-            gap='6'
-            color='blackAlpha.700'
-            fontWeight='bold'
-            padding={2}
-            alignItems="center"
-            height={'1000px'}
-            w={"1100px"}
+        templateAreas={`"ratingsAndReviews"`}
+        gridTemplateRows={'1fr'}
+        gridTemplateColumns={'1fr'}
+        h='200px'
+        gap='6'
+        color='blackAlpha.700'
+        fontWeight='bold'
+        padding={2}
+        height={'1000px'}
+        w={"1100px"}
         >
             <GridItem bg='white' pl={2} area='ratingsAndReviews' overflowY={'scroll'} overflowX={'hidden'}>
                 <HStack>
@@ -30,17 +30,17 @@ function SuspiciousDownloads() {
                 </HStack>
                 <Box h='10px' w='500px' bg='white'>
                 </Box>
-                {Config.suspiciousDownloadApps.map(currentApp => {
+                {Object.values(Config.deceptiveCallApps).map(currentApp => {
                     let fraudColor = '';
                     let fraudMessage = "";
-                    if(currentApp.isFraud === 'yes') {
+                    if(currentApp.detectionStatus === 'malicious') {
                         fraudColor = 'red';
-                        fraudMessage = "Suspicious";
-                    } else if(currentApp.isFraud === 'not sure') {
+                        fraudMessage = "Malicious";
+                    } else if(currentApp.detectionStatus === 'suspicious') {
                         fraudColor = 'yellow';
-                        fraudMessage = "Cannot say";
+                        fraudMessage = "Suspicious";
                     } else {
-                        fraudMessage = "Not Suspicious";
+                        fraudMessage = "Harmless";
                         fraudColor = 'teal';
                     }
 
@@ -62,7 +62,10 @@ function SuspiciousDownloads() {
                                 lineHeight='tight'
                                 noOfLines={1}
                                 >
-                                Application name: {currentApp.name}
+                                <NavLink to="/appdetails" onClick={() => {
+                                    Config.appType = "deceptiveCalls"
+                                    Config.appId = currentApp.id;
+                                }}>Application name: {currentApp.name} </NavLink>
                                 </Box>
                                 <Box display='flex' mt='2' alignItems='center'>
                                     <Box>Ratings: </Box>

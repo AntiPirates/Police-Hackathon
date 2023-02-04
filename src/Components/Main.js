@@ -10,6 +10,9 @@ import VirusTotal from './VirusTotal.js';
 import SuspiciousDownloads from './SuspiciousDownloads.js';
 import DeceptiveCalls from './DeceptiveCalls.js';
 import { Route, NavLink, Link} from "react-router-dom";
+import www from '../images/www.jpg';
+import gps from '../images/playstore.jpg';
+import apstr from '../images/applestore.png';
 
 const Main = () => {
     let [ contacts, setContacts ] = useState(Config.phoneNumbers);
@@ -20,8 +23,8 @@ const Main = () => {
         <>
         <Grid
         templateAreas={`"header header header"
-        "traps stats ratingsAndReviews"
-        "traps geolocation ratingsAndReviews"`}
+        "traps stats schedule"
+        "traps geolocation generate"`}
         gridTemplateRows={'50px 190px 650px'}
         gridTemplateColumns={'300px 520px 1fr'}
         h='200px'
@@ -89,105 +92,41 @@ const Main = () => {
                             <TableCaption>Contact list of the fraudulents</TableCaption>
                             <Thead>
                                 <Tr>
-                                    <Th>Phone numbers</Th>
-                                    <Th>Frequency</Th>
+                                    <Th>Platforms</Th>
+                                    <Th>Number of hits</Th>
                                 </Tr>
                             </Thead>
                             <Tbody>
-                                {contacts.map(currentContact => {
+                                {/* {Config.trapDetails.map(currentTrap => {
                                     return( 
                                         <Tr>
-                                            <Td>{currentContact.contact}</Td>
-                                            <Td>{currentContact.freq}</Td>
+                                            <Td><Image src={www}/></Td>
+                                            <Td>{currentTrap.freq}</Td>
                                         </Tr>
                                         )
-                                    })}
+                                    })} */}
+                                    <Tr>
+                                        <Td><Image src={www}/></Td>
+                                        <Td>{Config.trapDetails[0].freq}</Td>
+                                    </Tr>
+                                    <Tr>
+                                        <Td><Image src={gps}/></Td>
+                                        <Td>{Config.trapDetails[1].freq}</Td>
+                                    </Tr>
+                                    <Tr>
+                                        <Td><Image src={apstr}/></Td>
+                                        <Td>{Config.trapDetails[2].freq}</Td>
+                                    </Tr>
                             </Tbody>
                             </Table>
                         </TableContainer>
                 </VStack>
             </GridItem>
-            <GridItem bg='white' pl={2} area='ratingsAndReviews' overflowY={'scroll'} overflowX={'hidden'}>
-                <HStack>
-                    <Box w='850px'>
-                        <Text textAlign={['left']} fontSize={20}> Ratings and reviews </Text>
-                    </Box>
-                    <Button colorScheme={'blue'} size='xs' onClick={onOpen}>Show complete stats</Button>
-                </HStack>
-                <Box h='10px' w='500px' bg='white'>
-                </Box>
-                {Config.failedVirusTotalApps.map(currentApp => {
-                    let fraudColor = '';
-                    let fraudMessage = "";
-                    if(currentApp.isFraud === 'yes') {
-                        fraudColor = 'red';
-                        fraudMessage = "Suspicious";
-                    } else if(currentApp.isFraud === 'not sure') {
-                        fraudColor = 'yellow';
-                        fraudMessage = "Cannot say";
-                    } else {
-                        fraudMessage = "Not Suspicious";
-                        fraudColor = 'teal';
-                    }
-
-                    // if(currentApp.isFraud === 'Not Suspicious') {
-                    //     // Do not display anything
-                    // } else {
-                        return (
-                            <Box borderWidth='1px' borderRadius='lg' overflow='hidden' w={'1000px'}>
-                            <Box p='6'>
-                                <Box display='flex' alignItems='baseline'>
-                                    <Badge borderRadius='full' px='2' colorScheme={fraudColor}>
-                                        Detected: {fraudMessage}
-                                    </Badge>
-                                </Box>
-                                <Box
-                                mt='1'
-                                fontWeight='semibold'
-                                as='h4'
-                                lineHeight='tight'
-                                noOfLines={1}
-                                >
-                                Application name: {currentApp.name}
-                                </Box>
-                                <Box display='flex' mt='2' alignItems='center'>
-                                    <Box>Ratings: </Box>
-                                    <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-                                        {currentApp.rating}
-                                        <Icon as={MdStar}/>
-                                        <Icon as={MdStar}/>
-                                        <Icon as={MdStar}/>
-                                    </Box>
-                                </Box>
-                                <Accordion  allowMultiple>
-                                    <AccordionItem>
-                                        <h2>
-                                        <AccordionButton>
-                                            <Box as="span" flex='1' textAlign='left' fontWeight='bold'>
-                                            Reviews
-                                            </Box>
-                                            <AccordionIcon />
-                                        </AccordionButton>
-                                        </h2>
-                                        <AccordionPanel pb={4} fontWeight='medium'>
-                                            {currentApp.reviews.map(review => {
-                                                return (
-                                                    <Box>
-                                                        {review}
-                                                    </Box>
-                                                )
-                                            })}
-                                        </AccordionPanel>
-                                    </AccordionItem>
-                                </Accordion>
-                                
-                            </Box>
-                            </Box>
-                            
-                        )
-                    // }
-                    
-                })}
+            <GridItem bg='white' pl={2} area='schedule'>
+                Schedule scan
+            </GridItem>
+            <GridItem bg='white' pl={2} area='generate'>
+                Generate report
             </GridItem>
             <GridItem bg='white' pl={2} area='geolocation'>
                 <Text textAlign={['left']} fontSize={20}> Geolocation </Text>
