@@ -34,14 +34,14 @@ function VirusTotal() {
                     let fraudColor = '';
                     let fraudMessage = "";
                     if(currentApp.detectionStatus === 'malicious') {
-                        fraudColor = 'red';
-                        fraudMessage = "Malicious";
-                    } else if(currentApp.detectionStatus === 'suspicious') {
                         fraudColor = 'yellow';
+                        fraudMessage = "Threatful";
+                    } else if(currentApp.detectionStatus === 'suspicious') {
+                        fraudColor = 'blue';
                         fraudMessage = "Suspicious";
                     } else {
-                        fraudMessage = "Threatful";
-                        fraudColor = 'teal';
+                        fraudMessage = "Fraudulent Calls";
+                        fraudColor = 'red';
                     }
 
                     // if(currentApp.isFraud === 'Not Suspicious') {

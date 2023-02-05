@@ -62,7 +62,7 @@ const Main = () => {
                                 <NavLink to="/deceptivecalls" target={'_blank'}><Text textAlign={['left', 'center']} color='white'> {Config.deceptivePhoneCalls} </Text></NavLink>
                             </Box>
                             <Box h='40px' w='400px' >
-                                <Text textAlign={['left']}> Deceptive phone calls </Text>
+                                <Text textAlign={['left']}> Scam call records </Text>
                             </Box>
                         </HStack>
                     </Box>
@@ -72,7 +72,7 @@ const Main = () => {
                             <NavLink to="/suspiciousdownloads" target={'_blank'}><Text textAlign={['left', 'center']} color='white' > {Config.suspiciousDownloads} </Text></NavLink>
                             </Box>
                             <Box h='40px' w='400px' bg='gray.100'>
-                                <Text textAlign={['left']}> Contains suspicious download links </Text>
+                                <Text textAlign={['left']}> Threatful apps </Text>
                             </Box>
                         </HStack>
                     </Box>
@@ -82,7 +82,7 @@ const Main = () => {
                             <NavLink to="/virustotal" target={'_blank'}><Text textAlign={['left', 'center']} color='white'> {Config.failedVirustotal} </Text></NavLink>
                             </Box>
                             <Box h='40px' w='400px' bg='gray.100'>
-                                <Text textAlign={['left']}> Failed virustotal test </Text>
+                                <Text textAlign={['left']}> Suspicious apps </Text>
                             </Box>
                         </HStack>
                     </Box>

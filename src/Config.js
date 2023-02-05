@@ -73,9 +73,9 @@ class Config {
             freq: '45'
         }
     ];
-    static deceptivePhoneCalls = '567';
-    static suspiciousDownloads = '890';
-    static failedVirustotal = '9800';
+    static deceptivePhoneCalls = '120';
+    static suspiciousDownloads = '250';
+    static failedVirustotal = '80';
 
     static failedVirusTotalApps = {
         1: {
