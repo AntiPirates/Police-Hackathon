@@ -7,7 +7,9 @@ import stats from '../images/stats.png';
 
 function AppDetails() {
     const { isOpen, onOpen, onClose } = useDisclosure();
-
+    const handlePrint = () => {
+        window.print();
+    };
     return (
         <>
          <Grid
@@ -116,7 +118,7 @@ function AppDetails() {
                 <Box bg='white'>
                 <VStack spacing={"20px"}>
                 <Center>
-                    <Button size="lg" colorScheme={"teal"} w="400px" h={"50px"}>Generate and mail report</Button>
+                    <Button size="lg" colorScheme={"teal"} w="400px" h={"50px"} onClick={handlePrint}>Generate and mail report</Button>
                 </Center>
                 <Center>
                     <Button size="lg" colorScheme={"teal"} w="400px" h={"50px"}>Report to MeiTY</Button>

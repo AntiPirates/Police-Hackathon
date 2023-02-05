@@ -24,7 +24,7 @@ function SuspiciousDownloads() {
             <GridItem bg='white' pl={2} area='ratingsAndReviews' overflowY={'scroll'} overflowX={'hidden'}>
                 <HStack>
                     <Box w='850px'>
-                        <Text textAlign={['left']} fontSize={20}> Ratings and reviews </Text>
+                        <Text textAlign={['left']} fontSize={40}> Security analysis </Text>
                     </Box>
                     {/* <Button colorScheme={'blue'} size='xs' onClick={onOpen}>Show complete stats</Button> */}
                 </HStack>
@@ -40,7 +40,7 @@ function SuspiciousDownloads() {
                         fraudColor = 'yellow';
                         fraudMessage = "Suspicious";
                     } else {
-                        fraudMessage = "Harmless";
+                        fraudMessage = "Threatful";
                         fraudColor = 'teal';
                     }
 

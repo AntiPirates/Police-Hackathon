@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 // import { Container, Grid, Typography } from '@material-ui/core';
 import { CContainer, CFormCheck } from '@coreui/react';
 import { Box, Center, RadioGroup, Radio, Stack, Image, Badge, SimpleGrid, HStack, GridItem, Grid, VStack, StackDivider, 
@@ -17,19 +17,25 @@ import www from '../images/www.jpg';
 import gps from '../images/playstore.jpg';
 import apstr from '../images/applestore.png';
 import MapChart from "./MapChart";
+import jsPDF from 'jspdf';
+import ReactToPrint from "react-to-print";
 
 const Main = () => {
     let [ contacts, setContacts ] = useState(Config.phoneNumbers);
     let [ showStats, setShowStats ] = useState(false);
     const [content, setContent] = useState("");
     const { isOpen, onOpen, onClose } = useDisclosure();
-    let [ isAutomatedSchedule, setIsAutomatedSchedule ] = useState(true);
+    let [ isAutomatedSchedule, setIsAutomatedSchedule ] = useState(false);
+    const handlePrint = () => {
+        window.print();
+    };
+
     return (
         <>
         <Grid
         templateAreas={`"header header header"
         "traps stats schedule"
-        "traps geolocation generate"`}
+        "traps geolocation generateReport"`}
         gridTemplateRows={'50px 190px 650px'}
         gridTemplateColumns={'300px 520px 1fr'}
         h='200px'
@@ -83,7 +89,7 @@ const Main = () => {
                 </VStack>
             </GridItem>
             <GridItem pl={2} bg='white' area='traps'>
-                <Text textAlign={['left']} fontSize={20}> Traps </Text>
+                <Text textAlign={['left']} fontSize={20}> Decoys </Text>
                 <Box h='10px'  bg='white'>
                 </Box>
                 <VStack
@@ -128,22 +134,22 @@ const Main = () => {
                 </VStack>
             </GridItem>
             <GridItem bg='white' pl={2} area='schedule'>
-            <Text textAlign={['left']} fontSize={20}> Schedule scan </Text>
+            <Text textAlign={['left']} fontSize={20}> Scanning process </Text>
             <Box h="10px"></Box>
             <Center>
-            <RadioGroup defaultValue='1'>
+            <RadioGroup defaultValue='2'>
                 <Stack spacing={4} direction='row'>
                     <Box h={"35px"} w={"400px"}borderWidth={"2px"}>
                         <Center>
-                            <Radio value='1' onClick={()=>{setIsAutomatedSchedule(true)}}>
-                            Automated
+                            <Radio value='2' onClick={()=>{setIsAutomatedSchedule(false)}}>
+                            Schduled Scan
                             </Radio>
                         </Center>
                     </Box>
                     <Box h={"35px"} w={"400px"}borderWidth={"2px"}>
                         <Center>
-                            <Radio value='2' onClick={()=>{setIsAutomatedSchedule(false)}}>
-                            Manual
+                            <Radio value='1' onClick={()=>{setIsAutomatedSchedule(true)}}>
+                            Automated Scan
                             </Radio>
                         </Center>
                     </Box>
@@ -154,26 +160,28 @@ const Main = () => {
             <Center>
                 <Box h="100px" w="820px" bg="gray.100">
                     {isAutomatedSchedule === true && <Center>
-                        <Text textAlign={['left']} fontSize={15} fontWeight="medium"> In automatic scheduling, the schedule starts at 08:00 A.M. IST. </Text>
+                        <Text textAlign={['left']} fontSize={15} fontWeight="medium"> In automatic scheduling, the scan begins based on threat frequency when alerted by security ecosystem. </Text>
                     </Center>}
                     {isAutomatedSchedule !== true && <Center>
-                        <Editable defaultValue='Click here to enter time' onClick={(value) => {
+                        <Text textAlign={['left']} fontSize={15} fontWeight="medium"> {`Run every: `}  </Text>
+                        <Editable defaultValue={` 24 `}onClick={(value) => {
                             Config.scheduleTime = value;
                             console.log(Config.scheduleTime);
                         }}>
                             <EditablePreview />
                             <EditableInput />
                         </Editable>
+                        <Text textAlign={['left']} fontSize={15} fontWeight="medium"> hrs  </Text>
                     </Center>}
                 </Box>
             </Center>
             </GridItem>
-            <GridItem bg='white' pl={2} area='generate'>
+            <GridItem bg='white' pl={2} area='generateReport'>
                 <Text textAlign={['left']} fontSize={20}> Generate report </Text>
                 <Box h={"100px"}></Box>
                 <VStack spacing={"40px"}>
                 <Center>
-                    <Button size="lg" colorScheme={"teal"} w="800px" h={"60px"}>Download Report</Button>
+                    <Button size="lg" colorScheme={"teal"} w="800px" h={"60px"} onClick={handlePrint}>Download Report</Button>
                 </Center>
                 <Center>
                     <Button size="lg" colorScheme={"teal"} w="800px" h={"60px"}>Generate and mail report</Button>

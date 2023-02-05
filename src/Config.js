@@ -138,7 +138,7 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '1',
-            detectionStatus: "harmless",
+            detectionStatus: "threatful",
             histogram: "url"
         },
         5: {
@@ -168,7 +168,7 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '1',
-            detectionStatus: "harmless",
+            detectionStatus: "threatful",
             histogram: "url"
         },
         7: {
@@ -248,7 +248,7 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '1',
-            detectionStatus: "harmless",
+            detectionStatus: "threatful",
             histogram: "url"
         },
         5: {
@@ -278,7 +278,7 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '1',
-            detectionStatus: "harmless",
+            detectionStatus: "threatful",
             histogram: "url"
         },
         7: {
@@ -358,7 +358,7 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '1',
-            detectionStatus: "harmless",
+            detectionStatus: "threatful",
             histogram: "url"
         },
         5: {
@@ -388,7 +388,7 @@ class Config {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a urna ipsum."
                 ],
             rating: '1',
-            detectionStatus: "harmless",
+            detectionStatus: "threatful",
             histogram: "url"
         },
         7: {
